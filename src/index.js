@@ -22,6 +22,8 @@ app.get('/json',(request, response) => {
     response.json({'message':"Hello world!"})
 });
 
+const importedPostRouting = require('./posts/postRoutes');
+app.use('/posts', importedPostRouting);
 
 // Run the server by making it 'listen' for network traffic
 app.listen(PORT, HOST, () => {
