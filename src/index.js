@@ -6,6 +6,12 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const HOST = '0.0.0.0';
 
+const firebaseAdmin = require('firebase-admin');
+const serviceAccount = require('../keys/express-masterclass-firebase-adminsdk-4cce9-51f165b536.json');
+firebaseAdmin.initializeApp({
+    credential: firebaseAdmin.credential.cert(serviceAccount),
+});
+
 // Best settings for setting up Express as an API server to receive and process JSON & form data.
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
